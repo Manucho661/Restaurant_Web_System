@@ -29,7 +29,15 @@ https://templatemo.com/tm-558-klassy-cafe
 
 </head>
 <body>
-
+<!-- ***** Preloader Start ***** -->
+<div id="preloader">
+    <div class="jumper">
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+</div>  
+<!-- ***** Preloader End ***** -->
         
         <header class="header-area header-sticky">
             <div class="container">
@@ -40,7 +48,7 @@ https://templatemo.com/tm-558-klassy-cafe
 
     
                             <a href="index.html" class="logo">
-                                <img src="{{ asset('assets/images/klassy-logo.png') }}" alt="Klassy Cafe Logo">
+                                <img src="{{ asset('assets/images/logo.png') }}" alt="Klassy Cafe Logo" width="40px">
           
                             </a>
     
@@ -62,15 +70,7 @@ https://templatemo.com/tm-558-klassy-cafe
                             -->
                                 <li class="scroll-to-section"><a href="#menu">Menu</a></li>
                                 <li class="scroll-to-section"><a href="#chefs">Chefs</a></li> 
-                                <li class="submenu">
-                                    <a href="javascript:;">Features</a>
-                                    <ul>
-                                        <li><a href="#">Features Page 1</a></li>
-                                        <li><a href="#">Features Page 2</a></li>
-                                        <li><a href="#">Features Page 3</a></li>
-                                        <li><a href="#">Features Page 4</a></li>
-                                    </ul>
-                                </li>
+                                
                                 <!-- <li class=""><a rel="sponsored" href="https://templatemo.com" target="_blank">External URL</a></li> -->
                                 <li class="scroll-to-section"><a href="#reservation">Contact Us</a></li> 
                             </ul>        
@@ -104,14 +104,14 @@ https://templatemo.com/tm-558-klassy-cafe
                 </div>
                 <div class="col-lg-4">
                     <div class="logo">
-                        <a href="index.html"><img src="assets/images/white-logo.png" alt=""></a>
+                        <a href="index.html"><img src="assets/images/logo.png" alt="" width="40px"></a>
                     </div>
                 </div>
                 <div class="col-lg-4 col-xs-12">
                     <div class="left-text-content">
-                        <p>© Copyright Klassy Cafe Co.
+                        <p>© Copyright Nucho Cafe Co.
                         
-                        <br>Design: TemplateMo</p>
+                        <br>Design: Nucho</p>
                     </div>
                 </div>
             </div>

@@ -657,7 +657,7 @@ banner
 }
 
 #top .left-content {
-  background-image: url(../images/top-left-bg.jpg);
+  background-image: url(../images/top-left-bg.jpg); 
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -1667,4 +1667,7 @@ responsive
   100% {
     opacity: 0;
   }
+}
+button{
+  border: none;
 }

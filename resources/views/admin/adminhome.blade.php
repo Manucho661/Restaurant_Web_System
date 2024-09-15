@@ -3,42 +3,12 @@
 </x-app-layout>
 
 
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
 
-    <link rel="stylesheet" href="{{asset('css/app.css')}}"> 
+
+@extends('admin.layouts.bars')
+
+@section('content')
   
-  </head>
-  <body>
-
-    <nav>
-      <input type="checkbox" id="check">
-      <label for="check" class="checkbtn">
-
-          <i  class="fas fa-bars"> Menu</i>
-      </label>
-
-      <label class="logo"> NUCHO </label>
-      <ul>
-          <li> <a class="active"  href="{{url('/home')}}">Home</a> </li>
-          <li> <a href="{{url('/viewChefs')}}"> Chefs</a></li>
-          <li> <a href="{{url('/users')}}">Users</a> </li>
-          <li> <a href="{{url('/viewOrders')}}"> Orders</a> </li>
-
-          <li> <a href="{{url('/viewReservations')}}">Reservations</a> </li>
-          
-      </ul>
-  </nav>
-     
-
-  <div class="container">
-
-    <div class="row">
-      <h3 style="color: red">FOOD ITEMS</h3>
-  </div>
   
           <table class="table table-striped  ">
               <thead class=" thead-dark" >
@@ -122,11 +92,4 @@
             </form>
       
       
-  
-
-
-
-  </div>
-      
-  </body>
-</html>
+            @endsection

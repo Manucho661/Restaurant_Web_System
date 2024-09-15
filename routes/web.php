@@ -23,13 +23,12 @@ use App\Http\Controllers\orderController;
 */
 
 Route::get('/', function () {
-    $user_id= Auth::id();
     $cart = session()->get('cart', []);
     $data = Food::all();
-    // compact('data');
     $chefs = Chef::all();
-    return view('home', compact('data', 'chefs','cart' ));
-});
+  
+    return view('home', compact('data', 'chefs', 'cart'));
+}) ->name('home');
 
 // HOME CONTROLLERS.
 
@@ -38,7 +37,7 @@ Route::get('/deleteChef/{id}',[adminController::class, 'deleteChef']);
 Route::post('/reservation',[homeController::class, 'reservation']);
 
 Route::get('/removeCart/{id}',[homeController::class, 'removeCart']);
-Route::get('/orderConfirm',[homeController::class, 'order']);
+
 Route::get('/submitOrder/{id}',[homeController::class, 'submitOrder']);
 
 
@@ -48,7 +47,7 @@ Route::get('/updateChefView/{id}',[adminController::class, 'updateChefView']);
 
 Route::post('/uploadChef',[adminController::class, 'uploadChef']);
 Route::get('/viewChefs',[adminController::class, 'viewChefs']);
-Route::get('/viewReservations',[adminController::class, 'viewReservations']);
+Route::get('/orderDetails',[adminController::class, 'orderDetails']);
 Route::get('/updateView/{id}',[adminController::class, 'updateView']);
 Route::post('/updateFoodMenu/{id}',[adminController::class, 'updateFoodMenu']);
 Route::get('/deleteMenu/{id}',[adminController::class, 'deleteMenu']);
@@ -58,11 +57,13 @@ Route::get('/foodMenu',[adminController::class, 'foodMenu']);
 Route::get('/deleteuser/{id}',[adminController::class, 'deleteuser']);
 Route::get('/viewOrders',[adminController::class, 'viewOrders']);
 Route::get('/searchOrder',[adminController::class, 'SearchOrders']);
+Route::get('/customers',[adminController::class, 'customers']);
 
 // orders
 Route::get('/viewOrder/{id}',[adminController::class, 'viewOrder']);
 Route::get('/removeCartItem/{id}',[adminController::class, 'removeCartItem']);
 
+Route::post('/orderConfirm',[orderController::class, 'order']);
 
 //cart
 Route::get('/addQuantity/{id}',[cartController::class, 'addQuantity']);

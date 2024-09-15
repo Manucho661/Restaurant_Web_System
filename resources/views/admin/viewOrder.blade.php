@@ -1,39 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+<x-app-layout>
+    
+</x-app-layout>
+
+@extends('admin.layouts.bars')
+
+@section('content')
 
 
-    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
-
-    <link rel="stylesheet" href="{{asset('css/app.css')}}"> 
-</head>
-<body>
-    <nav>
-        <input type="checkbox" id="check">
-        <label for="check" class="checkbtn">
-  
-            <i  class="fas fa-bars"> Menu</i>
-        </label>
-  
-        <label class="logo"> NUCHO </label>
-        <ul>
-            <li> <a class="active"  href="{{url('/')}}">Home</a> </li>
-            <li> <a href="{{url('/viewChefs')}}"> Chefs</a></li>
-            <li> <a href="{{url('/users')}}">Users</a> </li>
-            <li> <a href="{{url('/viewOrders')}}"> Orders</a> </li>
-
-            <li> <a href="{{url('/users')}}">Reservations</a> </li>
-            
-        </ul>
-    </nav>
-<div class="container">
-    <div class="row">
-        <h3 style="color: red"> Orders</h3>
-    </div>
     
             <table class="table table-striped  ">
                 <thead class=" thead-dark" >
@@ -49,7 +22,7 @@
 
                 <tbody>
                   <tbody>
-                    @foreach ($order->orderItems as $item)
+                    {{-- @foreach ($order->orderItems as $item)
     
                     <tr>
                        
@@ -62,16 +35,11 @@
                         
                     @endforeach
                   
-                
+                 --}}
                 </tbody>
               </table>
   
              
-        
+              @endsection
 
 
-</div>
-
-
-</body>
-</html>

@@ -66,7 +66,7 @@ $cartItem= [
   "id"=>$id,
   "Name" =>$name,
   "Price"=>$price,
-  "quantity" => $request->quantity,
+  "quantity" => 1,
   "Description"=>$description,
   "image"=>$image
 ];

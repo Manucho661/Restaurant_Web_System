@@ -25,17 +25,20 @@
                         <h1 class='title'>{{$food['title']}}</h1>
                         <p class='description'>  {{$food['description']}}  </p>
                         <div class="main-text-button">
-                            <div class="scroll-to-section"><a href="#reservation">Make Reservation <i class="fa fa-angle-down"></i></a></div>
+                            <div class="scroll-to-section"> <button type="submit" class="btn btn-secondary">add to cart</button></div>
                         </div>
                       </div>
+                      
+
                   </div>
               </div>
-              <div>
-                <br>
-                <input type="number" name="quantity" min="1" style="width: 80px" value="1">
               
-                 <input type="submit" value="Add to Cart">
-                
+              <div>
+            
+
+
+                <br>
+              
               </div>
               
     </form>

@@ -6,14 +6,13 @@
 @section('content')
   
 
-
-
-
   <h1>NUCHO</h1>
   
-      </div>
-<div class="container rounded bg-gradient-to-right bg-opacity-75  p-3" style="margin-top:100px; background:#fb5849" >
-<div  class="row mt-3 mx-3" >
+</div> 
+
+<div class="container rounded bg-gradient-to-right bg-opacity-75  p-3" style="margin-top:10px; background:white" >
+
+  <div  class="row mt-3 mx-3" >
     <div class="col-md-3">
       <div style="margin-top: 50px; margin-left: 10px;" class="text-center">
         <i id="animationDemo" data-mdb-animation="slide-right" data-mdb-toggle="animation"
@@ -35,12 +34,13 @@
             <h4 style="color: #495057 ;">Delivery Details</h4>
           </div>
   
-          <form class="mb-0">
+          <form class="mb-0"  action="{{url('orderConfirm')}}" method="POST" >
+            @csrf
   
-            <div class="row mb-4">
+            <div class="row mb-4"  >
               <div class="col">
                 <div data-mdb-input-init class="form-outline">
-                  <input type="text" id="form9Example1" class="form-control input-custom" />
+                  <input type="text" id="form9Example1" value="{{$user['name']}}" class="form-control input-custom text-danger  " />
                   <label class="form-label" for="form9Example1">First name</label>
                 </div>
               </div>
@@ -54,13 +54,13 @@
             <div class="row mb-4">
               <div class="col">
                 <div data-mdb-input-init class="form-outline">
-                  <input type="text" id="form9Example3" class="form-control input-custom" />
+                  <input type="text" name="city" id="form9Example3" class="form-control input-custom" />
                   <label class="form-label" for="form9Example3">City</label>
                 </div>
               </div>
               <div class="col">
                 <div data-mdb-input-init class="form-outline">
-                  <input type="text" id="form9Example4" class="form-control input-custom" />
+                  <input type="text" name="zip" id="form9Example4" class="form-control input-custom" />
                   <label class="form-label" for="form9Example4">Zip</label>
                 </div>
               </div>
@@ -68,13 +68,13 @@
             <div class="row mb-4">
               <div class="col">
                 <div data-mdb-input-init class="form-outline">
-                  <input type="text" id="form9Example6" class="form-control input-custom" />
+                  <input type="text" name="address" id="form9Example6" class="form-control input-custom" />
                   <label class="form-label" for="form9Example6">Address</label>
                 </div>
               </div>
               <div class="col">
                 <div data-mdb-input-init class="form-outline">
-                  <input type="email" id="typeEmail" class="form-control input-custom" />
+                  <input type="email" id="typeEmail" value="{{$user['email']}}" class="form-control input-custom  text-danger " />
                   <label class="form-label" for="typeEmail">Email</label>
                 </div>
               </div>

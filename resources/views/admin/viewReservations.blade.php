@@ -1,20 +1,11 @@
+
 <x-app-layout>
     
 </x-app-layout>
 
+@extends('admin.layouts.bars')
 
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    @include('admin.admincss')
-  </head>
-  <body>
-    <div class="container-scroller">
-     
-      <!-- partial:partials/_sidebar.html -->
-     
-      @include('admin.navbar')
+@section('content')
       <!-- partial -->
       <div style="position:relative; top:80px; left:2vw; background-color:gray; height:fit-content; width:fit-content; padding:10px; border-radius:10px;">
         <table>
@@ -65,17 +56,8 @@
   
   
   
-  
+      @endsection 
 
 
-          <!-- partial -->
-        </div>
-        <!-- main-panel ends -->
-      </div>
-      <!-- page-body-wrapper ends -->
-    </div>
-    <!-- container-scroller -->
-    <!-- plugins:js -->
-    @include('admin.script')
-  </body>
-</html>
+        
+    

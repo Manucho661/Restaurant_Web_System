@@ -40,6 +40,12 @@ class adminController extends Controller
 
 
   }
+  public function customers(){
+    $data=Food::all();
+    return view('admin.customers', compact('data'));
+
+  }
+
 
   public function uploadFoodItem(Request $request){
 
@@ -100,10 +106,11 @@ class adminController extends Controller
     return redirect()->back();
 
   }
-  public function viewReservations(){
+  public function orderDetails(){
 
-    $data=Reservation::all();
-    return view('admin.Reservations1', compact('data'));
+    $order=Order::find(14);
+    $order->load('orderItems.food');
+    return view('admin.orderDetails', compact('order'));
 
   }
 
