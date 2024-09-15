@@ -19,7 +19,7 @@
       
         @csrf
               <div class="item">
-                  <div style="background-image: url('/foodimage/{{$food['image']}}');" class='card'>
+                  <div style="background-image: url('/foodimage/{{$food['image']}}')" class='card'>
                       <div class="price"><h6> {{$food['price']}}</h6></div>
                       <div class='info'>
                         <h1 class='title'>{{$food['title']}}</h1>
@@ -32,10 +32,10 @@
               </div>
               <div>
                 <br>
-                <input type="number" name="quantity" min="1" style="width: 80px" placeholder="1">
+                <input type="number" name="quantity" min="1" style="width: 80px" value="1">
+              
                  <input type="submit" value="Add to Cart">
-
-
+                
               </div>
               
     </form>

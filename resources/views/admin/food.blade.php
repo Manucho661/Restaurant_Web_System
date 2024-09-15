@@ -20,7 +20,7 @@
       <!-- partial -->
 
       {{-- Inserting Food data --}}
-      <div style="position: relative; top:80px; background-color:gray; width:25vw; left:2vw; padding:20px; border-radius:10px; height:70vh; color:black;">
+      <div style="position: relative; top:80px; background-color:gray; width:25vw; left:2vw; padding:20px; border-radius:10px; height:70vh; color:black;  overflow:auto;">
 
         <form action="{{('uploadFoodItem')}}" method="POST" enctype="multipart/form-data">
 
@@ -47,7 +47,7 @@
             <div>
 
             <label for="image">Enter Image</label>
-                <input type="file" name="image" required>
+                <input type="file" name="impage" required>
             </div>
 
                  
@@ -68,7 +68,7 @@
 
       </div>
 
-    <div style="position:relative; top:80px; left:5vw; background-color:gray; height:fit-content; width:fit-content; padding:10px; border-radius:10px;">
+    <div style="position:relative; overflow:auto; top:80px; left:5vw; background-color:gray; height:fit-content; width:fit-content; padding:10px; border-radius:10px;">
       <table>
         <tr >
           <th style="padding: 10px;">Title</th>

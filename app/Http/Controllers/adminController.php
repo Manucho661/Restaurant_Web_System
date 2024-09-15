@@ -1,14 +1,17 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use App\Models\Cart;
+
 use App\Models\Chef;
 use App\Models\Food;
 use App\Models\User;
 use App\Models\Order;
+use App\Models\cartItem;
+use App\Models\OrderItem;
 use App\Models\Reservation;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
 class adminController extends Controller
@@ -18,7 +21,7 @@ class adminController extends Controller
 
 
     $data=User::all();
-    return view('admin.users', compact('data'));
+    return view('admin.users1', compact('data'));
 
   }
 
@@ -41,9 +44,22 @@ class adminController extends Controller
   public function uploadFoodItem(Request $request){
 
     $data = new Food;
-    $image = $request -> image;
-    $imagename = time(). '.' .$image->getClientOriginalExtension();
-    $request->image->move('foodimage', $imagename);
+
+    $assignment=$request->validate([
+      'description' => 'required',
+      'title' => 'required',
+      'image' => 'required'
+
+  ]);
+    
+
+
+        // $image = $request->file('image');
+         $image = $request->image; // Use file() to get the UploadedFile instance
+         $imagename = time() . '.' . $image->getClientOriginalExtension();
+        $image->move('foodimage', $imagename);
+         $data->image = $imagename;
+    
 
     $data->title= $request->title;
     $data->price= $request->price;
@@ -87,12 +103,13 @@ class adminController extends Controller
   public function viewReservations(){
 
     $data=Reservation::all();
-    return view('admin.viewReservations', compact('data'));
+    return view('admin.Reservations1', compact('data'));
 
   }
 
   public function viewChefs(){
 
+    
     if(Auth::id())
     {
       $usertype= Auth::user()->usertype;
@@ -100,7 +117,8 @@ class adminController extends Controller
       if($usertype=='admin')
       {
     $data=Chef::all();
-    return view('admin.Chefs', compact('data'));
+    
+    return view('admin.Chefs1', compact('data'));
       }
 
       else{
@@ -174,38 +192,39 @@ class adminController extends Controller
 
   }
 
-  Public function add_to_Cart(Request $request, $id){
-
-    if(Auth::id())
-    {
-      $user_id= Auth::id();
-      $food_id= $id;
-      $quantity= $request -> quantity;
-
-      $cart = new Cart;
-      $cart->user_id=$user_id;
-      $cart->food_id=$id;
-      $cart-> quantity= $quantity;
-      $cart->save();
-      return redirect()->back();
-    }
-
-    else{
-      return redirect('/login');
-    }
-
-
-  }
-  
+ 
   public function viewOrders(){
 
-    $data=Order::all();
+    $data = Order::with('users')->get();
+    
 
-    return view('admin.Orders', compact('data'));
+    return view('admin.Orders1', compact('data'));
 
 
   }
 
+  public function viewOrder($id){
+    
+   
+    $order=Order::find(14);
+    $order->load('orderItems.food');
+   
+
+    return view('admin.viewOrder', compact('order'));
+
+
+  }
+
+  public function removeCartItem($id){
+    
+   
+    
+    return redirect()->back();
+   
+  }
+
+
+  
 
 
 } 

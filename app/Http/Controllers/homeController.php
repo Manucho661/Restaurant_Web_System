@@ -6,6 +6,7 @@ use App\Models\Cart;
 use App\Models\Chef;
 use App\Models\Food;
 use App\Models\Order;
+use App\Models\OrderItem;
 use App\Models\Reservation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -14,19 +15,26 @@ class homeController extends Controller
 {
     //
     public function index(){
+
+        
+
         $usertype= Auth::user()->usertype;
 
         if($usertype=='admin')
         {
-            return view('admin.adminhome');
+          $data=Food::all();
+          return view('admin.adminhome', compact('data'));      
+
         }
         else
         {
             $user_id= Auth::id();
-            $cart_items= Cart::where('user_id', $user_id)->count();
+            $cart = session()->get('cart', []);
+            // $cart_items= Cart::where('user_id', $user_id)->count();
+            
             $chefs = Chef::all();
             $data = Food::all();
-            return view('home', compact('data','chefs','cart_items'));
+            return view('home', compact('data','chefs','cart'));
         }
 
     }
@@ -45,22 +53,7 @@ class homeController extends Controller
       }
 
 
-      public function showCart($id){
-
-
-        if( Auth::id()==$id){
-
-        $user_id= Auth::id();
-        $cart_items= Cart::where('user_id', $user_id)->count(); //number of cart items for auntheticated user.
-        $data1 = cart::select('*') -> where('user_id', '=', $id)->get();  //all carts of the authenticated user.
-        $data = cart::where('user_id', $id) -> join('food', 'carts.food_id', '=', 'food_id')->get(); //join food with cat table where food_id = cart_id.
-        return view('showCart', compact('cart_items','data1','data'));
-        }
-        else{
-          return redirect()->back();
-        }
-
-      }
+      
       public function removeCart($id){
         $food_id= Cart::find($id);
         $food_id-> delete();
@@ -68,19 +61,53 @@ class homeController extends Controller
 
       }
 
-      public function orderConfirm(Request $request){
-        foreach ($request->food_name as $key => $foodname){
-          $data = new Order;
-          $data -> food_name = $foodname;
-          $data -> price = $request ->price[$key];
-          $data -> quantity = $request ->quantity[$key];
-          $data -> name = $request -> name;
-          $data -> phone = $request -> phone;
-          $data -> address = $request -> address;
+      public function order(Request $request){
+        $order = new Order;
+        $user_id = Auth::id();
+        $order_item = new OrderItem;
+        $new_order= $order::create([
+          'user_id'=>$user_id,
+        ]);
+
+        $cart= session()->get('cart');
+
+        foreach($cart as $id=> $item){
+          $food_id=$item['id'];
+          $order_item::create( [
+            'food_id'=>$food_id,
+            'quantity'=>'1',
+            'order_id' => $new_order->id,
+          ]);
+
+          session()->forget('cart');
+          // return redirect()->back();
 
 
-          $data -> save();
+
+
+          $user_id= Auth::id();
+          $cart = session()->get('cart', []);
+          $data = Food::all();
+          // compact('data');
+          $chefs = Chef::all();
+          return view('home', compact('data', 'chefs','cart' ));
+          
+
         }
-        return redirect()->back();
+
+
+
+       
+          
+       
+        // return redirect()->back();
+      }
+
+      public function submitOrder($id){
+        
+        $cart=Cart::find($id);
+
+
+
       }
 }

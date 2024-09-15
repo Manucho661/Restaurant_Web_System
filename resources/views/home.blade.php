@@ -52,7 +52,7 @@ https://templatemo.com/tm-558-klassy-cafe
                     <nav class="main-nav">
                         <!-- ***** Logo Start ***** -->
                         <a href="index.html" class="logo">
-                            <img src="assets/images/klassy-logo.png" align="klassy cafe html template">
+                             <img src="assets/images/klassy-logo.png" align="klassy cafe html template"> 
                         </a>
                         <!-- ***** Logo End ***** -->
                         <!-- ***** Menu Start ***** -->
@@ -86,19 +86,16 @@ https://templatemo.com/tm-558-klassy-cafe
 
                             <li class="scroll-to-section">
                                 
-                                @auth
-                                <a style="color: green" href="{{url('/showCart', Auth::user()->id)}}" >
+                                {{-- @auth --}}
+                                <a style="color: green" href="{{url('/showCart')}}" >
 
 
-                                Cart [{{$cart_items}}]
+                                Cart [{{count($cart)}}]
 
                             </a>
-                                @endauth
+                                {{-- @endauth --}}
                          
-
-                                @guest
-                                Cart [0]
-                                @endguest
+                               
                              
                         
                         </li> 
@@ -121,6 +118,8 @@ https://templatemo.com/tm-558-klassy-cafe
 
                                        </li>
                                 
+                                           
+                                       {{-- @endforeach --}}
                                     @else
 
                                         <li  class="scroll-to-section"> <a href="{{ route('login') }}" >Log in</a> </li> 
@@ -150,6 +149,8 @@ https://templatemo.com/tm-558-klassy-cafe
     </header>
     <!-- ***** Header Area End ***** -->
 
+
+    
     <!-- ***** Main Banner Area Start ***** -->
     <div id="top">
         <div class="container-fluid">
