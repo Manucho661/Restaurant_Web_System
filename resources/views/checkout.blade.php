@@ -10,28 +10,58 @@
   
 </div> 
 
-<div class="container rounded bg-gradient-to-right bg-opacity-75  p-3" style="margin-top:10px; background:white" >
 
-  <div  class="row mt-3 mx-3" >
-    <div class="col-md-3">
-      <div style="margin-top: 50px; margin-left: 10px;" class="text-center">
-        <i id="animationDemo" data-mdb-animation="slide-right" data-mdb-toggle="animation"
-          data-mdb-animation-reset="true" data-mdb-animation-start="onScroll"
-          data-mdb-animation-on-scroll="repeat" class="fas fa-3x fa-shipping-fast text-white"></i>
-        <h3 class="mt-3 text-white">Welcome</h3>
-        <p class="white-text">You are 30 seconds away from compleating your order!</p>
-      </div>
-      <div class="text-center">
-        <button type="submit" data-mdb-button-init data-mdb-ripple-init class="btn btn-white btn-rounded back-button">View Cart</button>
-      </div>
-  
-  
+<div class="container rounded bg-gradient-to-right bg-opacity-75  p-3" style="margin-top:12px; background:white" >
+
+  <div class="row shadow-sm p" style="padding: 30px;">
+    <div class="col-lg-10">
+      <b >SHIPPING INFORMATION</b>
+    <div> <span>{{$user['name']}} </span> </div>
+    <div> <span>{{$user['email']}} </span> <span>{{$user['city']}} </span>  <span>{{$user['address']}} </span> </div>
     </div>
-    <div class="col-md-9 justify-content-center">
+    
+    <div class="col-lg col-sm-2 d-flex justify-content-sm-center justify-content-md-start justify-content-lg-center justify-content-xl-end mb-2">
+      <div class="float-md-end">
+        <text class="h6">  <button onclick="on()">Edit</button>  </text> <br />
+        
+      </div>
+    </div>
+ </div>
+ 
+  @foreach ($cart as $id => $item)
+  <div class="row shadow-sm p" style="padding: 30px;"> 
+
+    <div class="col-lg-10">
+      <div class="me-lg-5">
+        <div class="d-flex">
+            <img src="/foodimage/{{$item['image']}}" class="border rounded me-3" style="width: 96px; height: 96px;" alt="noma"> 
+          
+            
+          <div class="">
+            <h4 href="#" class="nav-link"> {{$item['Name']}} </h4>
+            <p class="text-muted">It is so sweet</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg col-sm-2 d-flex justify-content-sm-center justify-content-md-start justify-content-lg-center justify-content-xl-end mb-2">
+      <div class="float-md-end">
+        <text class="h6">ksh {{$item['Price']*$item['quantity']}}</text> <br />
+        <small class="text-muted text-nowrap"> ksh {{$item['Price']}}/ per item </small>
+      </div>
+    </div>
+  </div>
+  @endforeach
+  
+
+  <div id="overlay"  onclick="off()" class="row mt-3 mx-3" style="margin-top: 20vh;">
+    
+    <div  class="col-md-12 justify-content-center">
       <div class="card card-custom pb-4">
         <div class="card-body mt-0 mx-5">
           <div class="text-center mb-3 pb-2 mt-3">
-            <h4 style="color: #495057 ;">Delivery Details</h4>
+            <h4 style="color: #495057 ;">Shopping Information</h4>
           </div>
   
           <form class="mb-0"  action="{{url('orderConfirm')}}" method="POST" >
@@ -83,7 +113,7 @@
             <div class="float-end ">
               <!-- Submit button -->
               <button type="submit" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-rounded"
-                style="background-color: #0062CC ;">Place order</button>
+                style="background-color: #0062CC ;">Edit</button>
             </div>
   
           </form>
@@ -94,4 +124,15 @@
 
 </div>
 
+
+
+<script>
+  function on() {
+    document.getElementById("overlay").style.display = "block";
+  }
+  
+  function off() {
+    document.getElementById("overlay").style.display = "none";
+  }
+  </script>
 @endsection

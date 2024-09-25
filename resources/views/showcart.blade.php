@@ -53,7 +53,7 @@ https://templatemo.com/tm-558-klassy-cafe
                         <!-- ***** Logo Start ***** -->
 
                         <a href="index.html" class="logo">
-                            <img src="{{ asset('assets/images/logo.png') }}" alt="Klassy Cafe Logo" width="40px">
+                          <h4 style=" background-color: #fb5849; margin-top:31px;font-family: 'Dancing Script', cursive; font-size: 34px; font-weight: 700;  " >Nucho</h4>
                             
                         </a>
 
@@ -263,7 +263,7 @@ https://templatemo.com/tm-558-klassy-cafe
                 </div>
                 <div class="col-lg-4">
                     <div class="logo">
-                        <a href="index.html"><img src="{{asset('assets/images/logo.png')}}" alt="" width="40px"></a>
+                      <h4 style=" background-color: #fb5849; margin-top:31px;font-family: 'Dancing Script', cursive; font-size: 34px; font-weight: 700;  " >Nucho</h4>
                     </div>
                 </div>
                 <div class="col-lg-4 col-xs-12">

@@ -15,9 +15,10 @@ class orderController extends Controller
 {
     //
     public function checkout(){
+      $cart=session()->get('cart');
         $user= Auth::user();
       
-        return view('checkout', compact('user')); 
+        return view('checkout', compact('user','cart')); 
 
       }
 
