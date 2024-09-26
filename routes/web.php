@@ -6,6 +6,7 @@ use App\Models\Food;
 use App\Http\Controllers\order;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\payController;
 use App\Http\Controllers\cartController;
 use App\Http\Controllers\homeController;
 use App\Http\Controllers\adminController;
@@ -74,7 +75,7 @@ Route::get('/showCart',[cartController::class, 'showCart']);
 
 //order
 Route::get('/checkout',[orderController::class, 'checkout'])->middleware('auth');
-
+Route::get('/pay/{totalPrice}',[payController::class, 'pay']);
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),

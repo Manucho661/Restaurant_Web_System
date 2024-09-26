@@ -1,7 +1,8 @@
 <x-guest-layout>
     <x-authentication-card>
         <x-slot name="logo">
-            <x-authentication-card-logo />
+            <h4 style="  margin-top:31px;font-family: 'Dancing Script', cursive; font-size: 34px; font-weight: 700;  " >Nucho</h4>
+
         </x-slot>
 
         <x-validation-errors class="mb-4" />

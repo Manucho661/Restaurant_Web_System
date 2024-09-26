@@ -63,27 +63,8 @@ https://templatemo.com/tm-558-klassy-cafe
                             <li class="scroll-to-section"><a href="#top" class="active">Home</a></li>
                             <li class="scroll-to-section"><a href="#about">About</a></li>
                            	
-                        <!-- 
-                            <li class="submenu">
-                                <a href="javascript:;">Drop Down</a>
-                                <ul>
-                                    <li><a href="#">Drop Down Page 1</a></li>
-                                    <li><a href="#">Drop Down Page 2</a></li>
-                                    <li><a href="#">Drop Down Page 3</a></li>
-                                </ul>
-                            </li>
-                        -->
-                            <li class="scroll-to-section"><a href="#menu">Menu</a></li>
-                            <li class="scroll-to-section"><a href="#chefs">Chefs</a></li> 
-                            <li class="submenu">
-                                <a href="javascript:;">Features</a>
-                                <ul>
-                                    <li><a href="#">Features Page 1</a></li>
-                                    <li><a href="#">Features Page 2</a></li>
-                                    <li><a href="#">Features Page 3</a></li>
-                                    <li><a href="#">Features Page 4</a></li>
-                                </ul>
-                            </li>
+                     
+                           
                             <!-- <li class=""><a rel="sponsored" href="https://templatemo.com" target="_blank">External URL</a></li> -->
                             <li class="scroll-to-section"><a href="#reservation">Contact Us</a></li> 
                         </ul>        
@@ -125,10 +106,10 @@ https://templatemo.com/tm-558-klassy-cafe
 
             <div class="m-4">
               <h4 class="card-title mb-4">Your Food Items</h4>
-           
-              @foreach ($cart as $id => $item)
-              
 
+              @if (!empty($cart))
+            @foreach ($cart as $id => $item)
+              
               <div class="row gy-3 mb-4">
                 <div class="col-lg-5">
                   <div class="me-lg-5">
@@ -161,15 +142,19 @@ https://templatemo.com/tm-558-klassy-cafe
                   </div>
                 </div>
               </div>
-              @endforeach
-  
-             
-  
+              @endforeach           
+              
+    @else
+            <i style="color: #fb5849"> Auch!! your cart is Empty</i>
+
+    @endif
               
             </div>
+
+
   
             <div class="border-top pt-4 mx-4 mb-4">
-              <p> Free Delivery within 1-2 weeks</p>
+              <p> Free Delivery within 1-2 hours</p>
               <p class="text-muted">
                 
                 Dear customer, we take your order with maximum care. Trust us and we shall deliver it for you.
@@ -201,11 +186,14 @@ https://templatemo.com/tm-558-klassy-cafe
                 <p class="mb-2">Total price:</p>
                 <p class="mb-2 fw-bold">ksh {{$totalPrice}} </p>
               </div>
-  
+              
               <div class="mt-3">
+                @if (!empty($cart))
                 <a href="{{url('/checkout')}}" class="btn btn-success w-100 shadow-0 mb-2">  Proceed to Check Out</a>
-                <a href="#" class="btn btn-light w-100 border mt-2"> Back to shop </a>
+                @endif
+                <a href="{{url('/')}}" class="btn btn-light w-100 border mt-2"> Back to shop </a>
               </div>
+
             </div>
           </div>
         </div>

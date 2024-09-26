@@ -99,13 +99,15 @@ return redirect()->back();
 
       $cart=session()->get('cart');
       $totalPrice=0;
-      $cartItems= count( $cart);
+      
+      if ($cart !== null){
+        $cartItems= count( $cart);
       if($cartItems>0){
       foreach ($cart as $id => $item) {
         
         $totalPrice += $item['Price'] * $item['quantity'];
     }}
-    
+  }
       return view('showcart', compact('cart', 'totalPrice'));
 
   }

@@ -67,8 +67,7 @@ https://templatemo.com/tm-558-klassy-cafe
                                     </ul>
                                 </li>
                             -->
-                                <li class="scroll-to-section"><a href="#menu">Menu</a></li>
-                                <li class="scroll-to-section"><a href="#chefs">Chefs</a></li> 
+                                
                                 
                                 <!-- <li class=""><a rel="sponsored" href="https://templatemo.com" target="_blank">External URL</a></li> -->
                                 <li class="scroll-to-section"><a href="#reservation">Contact Us</a></li> 

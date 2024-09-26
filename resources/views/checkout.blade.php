@@ -14,10 +14,10 @@
 <div class="container rounded bg-gradient-to-right bg-opacity-75  p-3" style="margin-top:12px; background:white" >
 
   <div class="row shadow-sm p" style="padding: 30px;">
-    <div class="col-lg-10">
-      <b >SHIPPING INFORMATION</b>
-    <div> <span>{{$user['name']}} </span> </div>
-    <div> <span>{{$user['email']}} </span> <span>{{$user['city']}} </span>  <span>{{$user['address']}} </span> </div>
+    <div class="col-lg-10" >
+      <b style="color:black;">SHIPPING INFORMATION</b>
+    <div>  <i> Name:  </i> <span style="color:red;" >{{$user['name']}} </span> &emsp; <i> Phone:  </i><span>{{$user['PHONE']}} </div>
+    <div> <i> Mail:  </i><span style="color:red;" >{{$user['email']}} </span> &emsp; <i> City: </i> <span style="color:red;" >  {{$user['city']}} </span>  &emsp; <i> Address: </i> <span style="color:red;"> {{$user['address']}} </span> </div>
     </div>
     
     <div class="col-lg col-sm-2 d-flex justify-content-sm-center justify-content-md-start justify-content-lg-center justify-content-xl-end mb-2">
@@ -54,6 +54,23 @@
   </div>
   @endforeach
   
+  <div class="row shadow-sm p" style="padding: 30px;"> 
+
+    <div class="col-lg-10">
+      <b>Payment</b>
+      <div class="d-flex justify-content-between">
+        <p class="mb-2">Total price: ksh {{$totalPrice}}  </p>
+    
+      </div>
+    </div>
+
+    <div class="col-lg col-sm-2  justify-content-sm-center justify-content-md-start justify-content-lg-center justify-content-xl-end mb-2">
+     
+      <div > <button onclick="onOne()"  style="color:white; background:green; margin:2px; padding:5px; border-radius:10px;text-align:center; width:96%;" > Mpesa</button> </div>
+     <div style="color:white; background:green; margin:2px; padding:5px; border-radius:10px;text-align:center; " >BarCode</div>
+     <div style="color:white; background:gold;  padding:5px; border-radius:10px; text-align:center; ">Card</div>
+  </div>
+
 
   <div id="overlay"  onclick="off()" class="row mt-3 mx-3" style="margin-top: 20vh;">
     
@@ -126,6 +143,40 @@
 
 
 
+
+{{-- Mpesa infor request --}}
+<div onclick="off()" id="overlay2" class="container-fluid mt-5">
+  <div class="row justify-content-center">
+      <div class="col-md-6">
+          <div class="card ">
+              <div 
+class="card-header">
+                  <h3 class="text-center"> Pay ksh {{$totalPrice}}  </h3>
+              </div>
+              <div class="card-body " >
+                  <form action="{{url('pay', $totalPrice )}}" method="get">
+        
+                      <div class="mb-3">
+                          <label for="phone" 
+                          class="form-label">Phone Number</label>
+                          <input type="tel" name="phone" class="form-control" id="phone" placeholder="Enter yur M-pesa number starting with Country code">
+                      </div>
+                      <div class="mb-3 text-end">
+                        <button onclick="pesa()" >pay</button>
+                    </div>
+                      
+                  </form>
+              </div>
+
+          </div>
+      </div>
+  </div>
+</div>
+
+{{-- End of M-pesa infor --}}
+
+
+
 <script>
   function on() {
     document.getElementById("overlay").style.display = "block";
@@ -133,6 +184,31 @@
   
   function off() {
     document.getElementById("overlay").style.display = "none";
+  }
+
+  function onOne() {
+    document.getElementById("overlay2").style.display = "block";
+  }
+
+  function off1() {
+    document.getElementById("overlay2").style.display = "none";
+  }
+
+  function countNumbers() {
+  const input = document.getElementById("numberInput");
+  const numbers = input.value.split(" ").filter(value => !isNaN(value));
+  const button = document.getElementById("displayButton");
+
+  if (numbers.length === 10) {
+    button.style.display = "block";
+  } else {
+    button.style.display = "none";
+  }
+}
+
+
+  function pesa() {
+    alert ("Enter your M-pesa on the send Prompt to complete your Order");
   }
   </script>
 @endsection

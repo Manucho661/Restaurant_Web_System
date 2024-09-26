@@ -6,7 +6,7 @@
                   <h6>Our Menu</h6>
                   <h2>Our selection of items with quality taste 
                   </h2>
-                  <h6>(Hover over the Food item to add to cart)</h6>
+                  <h6>(Hover over Food item to add to cart)</h6>
               </div>
           </div>
       </div>

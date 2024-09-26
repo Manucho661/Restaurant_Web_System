@@ -15,10 +15,20 @@ class orderController extends Controller
 {
     //
     public function checkout(){
-      $cart=session()->get('cart');
-        $user= Auth::user();
       
-        return view('checkout', compact('user','cart')); 
+        $user= Auth::user();
+        $cart=session()->get('cart');
+        $totalPrice=0;
+        $cartItems= count( $cart);
+        if($cartItems>0){
+        foreach ($cart as $id => $item) {
+          
+          $totalPrice += $item['Price'] * $item['quantity'];
+      }}
+      
+
+
+        return view('checkout', compact('user','cart', 'totalPrice')); 
 
       }
 
